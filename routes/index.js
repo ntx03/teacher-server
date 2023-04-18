@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const usersRouter = require('./users');
 const newsRouter = require('./news');
+const mainRouter = require('./main');
+const photoRouter = require('./photo');
 const getData = require('./getData');
 const NotFound = require('../errors/NotFound');
 const {
@@ -14,8 +16,10 @@ router.post('/signin', validationLogin, login);
 router.post('/signup', createUserValid, createUser);
 router.use('/', getData);
 router.use(auth);
+router.use('/', mainRouter);
 router.use('/', usersRouter);
 router.use('/', newsRouter);
+router.use('/', photoRouter);
 
 router.use((req, res, next) => {
   next(new NotFound('Запрашиваемая страница не существует'));
