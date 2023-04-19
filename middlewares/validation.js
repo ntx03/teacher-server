@@ -37,6 +37,7 @@ const createPhotoValidation = celebrate({
     photo: Joi.array().required(),
   }),
 });
+
 // !!валидируем добавление блока с фотографиями
 const createPhotoBlockValidation = celebrate({
   body: Joi.object().keys({
@@ -44,6 +45,15 @@ const createPhotoBlockValidation = celebrate({
     photo: Joi.array().required(),
   }),
 });
+
+// !!валидируем добавление видео
+const createVideoValidation = celebrate({
+  body: Joi.object().keys({
+    name: Joi.string().min(5).required(),
+    link: Joi.string().required().custom(validationUrl),
+  }),
+});
+
 // обновляем заголовок
 const updateTitleMainValidation = celebrate({
   body: Joi.object().keys({
@@ -53,6 +63,7 @@ const updateTitleMainValidation = celebrate({
     id: Joi.string().hex().length(24).required(),
   },
 });
+
 // обновляем текст
 const updateTextMainValidation = celebrate({
   body: Joi.object().keys({
@@ -62,6 +73,7 @@ const updateTextMainValidation = celebrate({
     id: Joi.string().hex().length(24).required(),
   },
 });
+
 // обновляем фотографию
 const updatePhotoMainValidation = celebrate({
   body: Joi.object().keys({
@@ -72,6 +84,7 @@ const updatePhotoMainValidation = celebrate({
     id: Joi.string().hex().length(24).required(),
   },
 });
+
 // !!валидируем добавление на главную страничк
 const createMainValidation = celebrate({
   body: Joi.object().keys({
@@ -99,4 +112,5 @@ module.exports = {
   updatePhotoMainValidation,
   createPhotoBlockValidation,
   validationQuery,
+  createVideoValidation,
 };

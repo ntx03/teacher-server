@@ -3,6 +3,7 @@ const usersRouter = require('./users');
 const newsRouter = require('./news');
 const mainRouter = require('./main');
 const photoRouter = require('./photo');
+const videoRouter = require('./video');
 const getData = require('./getData');
 const NotFound = require('../errors/NotFound');
 const {
@@ -20,6 +21,7 @@ router.use('/', mainRouter);
 router.use('/', usersRouter);
 router.use('/', newsRouter);
 router.use('/', photoRouter);
+router.use('/', videoRouter);
 
 router.use((req, res, next) => {
   next(new NotFound('Запрашиваемая страница не существует'));
