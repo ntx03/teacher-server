@@ -13,15 +13,15 @@ const {
 const { login, createUser } = require('../controllers/users');
 const auth = require('../middlewares/auth');
 
-router.post('/signin', validationLogin, login);
-router.post('/signup', createUserValid, createUser);
+router.post('/api/signin', validationLogin, login);
+router.post('/api/signup', createUserValid, createUser);
 router.use('/api', getData);
 router.use(auth);
-router.use('/', mainRouter);
-router.use('/', usersRouter);
-router.use('/', newsRouter);
-router.use('/', photoRouter);
-router.use('/', videoRouter);
+router.use('/api', mainRouter);
+router.use('/api', usersRouter);
+router.use('/api', newsRouter);
+router.use('/api', photoRouter);
+router.use('/api', videoRouter);
 
 router.use((req, res, next) => {
   next(new NotFound('Запрашиваемая страница не существует!'));
