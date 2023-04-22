@@ -15,7 +15,7 @@ const auth = require('../middlewares/auth');
 
 router.post('/signin', validationLogin, login);
 router.post('/signup', createUserValid, createUser);
-router.use('/', getData);
+router.use('/app', getData);
 router.use(auth);
 router.use('/', mainRouter);
 router.use('/', usersRouter);
