@@ -24,7 +24,7 @@ router.use('/', photoRouter);
 router.use('/', videoRouter);
 
 router.use((req, res, next) => {
-  next(new NotFound('Запрашиваемая страница не существует'));
+  next(new NotFound('Запрашиваемая страница не существует!'));
 });
 
 module.exports = router;
